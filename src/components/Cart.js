@@ -1,12 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
 	const [isOpen, setIsOpen] = useState(true)
-	const total = cart.reduce(
-		(acc, plantType) => acc + plantType.amount * plantType.price,
+
+	if (typeof localStorage.getItem('cart') !== undefined) {
+		const json = localStorage.getItem('cart');
+		cart = JSON.parse(json);
+	}
+
+	
+
+	const items = Object.keys(cart)
+	const total = items.reduce(
+		(acc, item) => acc + cart[item].amount * cart[item].price,
 		0
 	)
+	
+	useEffect(() => {
+		document.title = `LMJ: ${total}€ d'achats`
+		localStorage.setItem('cart', JSON.stringify(cart))
+	}, [total])
+
 	return isOpen ? (
 		<div className='lmj-cart'>
 			<button
