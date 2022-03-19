@@ -8,9 +8,19 @@ import Header from './components/Header'
 import Error from './components/Error'
 import Results from './pages/Results'
 import Freelances from './pages/Freelances'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+`
 
 ReactDOM.render(
   <BrowserRouter>
+    <GlobalStyle />
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
