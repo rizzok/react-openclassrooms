@@ -27,10 +27,10 @@ const CardLabel = styled.span`
   font-weight: bold;
 `
 const CardImage = styled.img`
-  height: 90px;
-  width: 90px;
+  height: auto;
+  width: 50%;
   border-radius: 50%;
-  margin: 3rem;
+  margin: 1.5rem;
 `
 const CardTitle = styled.span`
   font-size: 25px;
